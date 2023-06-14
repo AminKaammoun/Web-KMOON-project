@@ -631,8 +631,8 @@ if (isset($_SESSION['Success'])) {
 
             $commande_totale = 0;
             foreach ($res as $row) {
-
-                $total = $row['prix'] * $row['quantity'];
+                $prix = $row['prix'] / $row['quantity'];
+                $total = $row['prix'] ;
                 $commande_totale += $total;
                 require_once('php/produit.php');
                 $pd = new produit();
@@ -640,7 +640,7 @@ if (isset($_SESSION['Success'])) {
                 echo " <tr>
                                         
                                         <td class='product_name'><a href='#'>{$row['produit_name']}</a></td>
-                                        <td class='product-price'>{$row['prix']}.000 DT</td>
+                                        <td class='product-price'>{$prix}.000 DT</td>
                                         <td class='product_quantity'><label>Quantity</label> <input min='1'
                                                 max='99' value='{$row['quantity']}' type='number'></td>
                                         <td class='product_total'>{$total}.000 DT</td>
